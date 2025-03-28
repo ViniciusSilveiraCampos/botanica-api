@@ -1,9 +1,8 @@
-- Esse é um projeto baseado no curso [FastAPI do ZERO](https://fastapidozero.dunossauro.com) 📺
-
-
 
 # Botanica API 🪴
-<div>
+
+
+<div align="center">
     <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)" >
     <img src="https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi" >
     <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" >
@@ -11,7 +10,8 @@
 </div>
 
 <br>
-Bem-vindo ao projeto Botanical API! Esta API foi criada para fornecer informações sobre algumas plantas e uma variedade de flores. É um modelo relativamente simples, com termos mais voltados a área científica. 
+Welcome to the Botanical API project! This API was created to provide information about a few plants and a variety of flowers. It is a relatively simple model, with terms more focused on the scientific field.
+
 
 <br><br>
 
@@ -26,11 +26,11 @@ Bem-vindo ao projeto Botanical API! Esta API foi criada para fornecer informaç�
 
 # O PROJETO. 🌿
 
-O objetivo da API é criar e uma gerenciar algumas plantas. Tudo isso em um contexto bastante simplificado. Usando somente as funcionalidades básicas para demonstração.
+The goal of the API is to create and manage some plants. All this in a very simplified context. Using only the basic functionalities for demonstration.
 
-> Por que as flores estão separadas das plantas? Por que toda flor é uma planta, mas nem toda planta é uma flor! E espero posteriormente dividir em mais categorias.
+> Why are flowers separated from plants? Because every flower is a plant, but not every plant is a flower! And I hope to divide it into more categories later.
 
-A implementação é baseada em 3 pilares:
+The implementation is based on 3 pillars:
 
 ```mermaid
 graph TD
@@ -52,306 +52,302 @@ graph TD
 
 # A API. 🍃
 
-A API é dividida em três routers 🪢:
+The API is divided into three routers 🪢:
 
-- `Contas`: Gerenciamento de contas e de acesso à API.
+- `Accounts`: Account and API access management.
 
-- `Plantas`: Gerenciamento de plantas.
+- `Plants`: Plant management.
 
-- `Flores`: Gerenciamento de plantas.
+- `Flowers`: Plant management.
 
-## Contas.
+## Accounts.
 
-Este módulo fornece endpoints para gerenciar usuários no sistema, incluindo criação, leitura, atualização e exclusão de usuários. Abaixo estão os detalhes de cada endpoint disponível.
+This module provides endpoints for managing users in the system, including creating, reading, updating, and deleting users. Below are the details of each available endpoint.
 
 ### Endpoints
 
-### 1. Listar Usuários
+### 1. List Users
 
-**GET** `/usuarios/`
+**GET** `/users/`
 
-Retorna uma lista de usuários com suporte a paginação.
+Returns a list of users with pagination support.
 
-- **Parâmetros de Query**:
-  - `limit` (int, opcional): O número máximo de usuários a serem retornados. Valor padrão: `10`.
-  - `offset` (int, opcional): O número de usuários a serem ignorados antes de começar a retornar os resultados. Valor padrão: `0`.
-  
-- **Resposta**:
-  - `200 OK`: Uma lista de usuários no formato `{ "users": [...] }`.
+- **Query Parameters**:
+- `limit` (int, optional): The maximum number of users to return. Default value: `10`.
+- `offset` (int, optional): The number of users to ignore before returning results. Default value: `0`.
 
-### 2. Criar Usuário
+- **Response**:
+- `200 OK`: A list of users in the format `{ "users": [...] }`.
 
-**POST** `/usuarios/`
 
-Cria um novo usuário no sistema.
+### 2. Create User
 
-- **Corpo da Requisição**:
-  - `UserSchema`: Esquema contendo `email`, `username` e `password` do novo usuário.
+**POST** `/users/`
 
-- **Resposta**:
-  - `201 Created`: O usuário recém-criado no formato `UserPublic`.
+Creates a new user in the system.
 
-- **Erros**:
-  - `400 Bad Request`: Se o `username` ou `email` já existir.
+- **Request Body**:
+- `UserSchema`: Schema containing `email`, `username` and `password` of the new user.
 
-### 3. Ler Usuário por ID
+- **Response**:
+- `201 Created`: The newly created user in `UserPublic` format.
 
-**GET** `/usuarios/{user_id}`
+- **Errors**:
+- `400 Bad Request`: If the `username` or `email` already exists.
 
-Retorna as informações de um usuário específico com base em seu ID.
+### 3. Get User by ID
 
-- **Parâmetros de Caminho**:
-  - `user_id` (int): O ID do usuário a ser recuperado.
+**GET** `/users/{user_id}`
 
-- **Resposta**:
-  - `200 OK`: Os detalhes do usuário no formato `UserPublic`.
+Returns information for a specific user based on their ID.
 
-- **Erros**:
-  - `404 Not Found`: Se o usuário com o `user_id` fornecido não for encontrado.
+- **Path Parameters**:
+- `user_id` (int): The user ID to retrieve.
 
-### 4. Atualizar Usuário
+- **Response**:
+- `200 OK`: The user details in `UserPublic` format.
 
-**PUT** `/usuarios/{user_id}`
+- **Errors**:
+- `404 Not Found`: If the user with the given `user_id` is not found.
 
-Atualiza as informações de um usuário existente.
+### 4. Update User
 
-- **Parâmetros de Caminho**:
-  - `user_id` (int): O ID do usuário a ser atualizado.
+**PUT** `/users/{user_id}`
 
-- **Corpo da Requisição**:
-  - `UserSchema`: Esquema contendo os novos valores para `email`, `username`, e `password`.
+Updates the information of an existing user.
 
-- **Resposta**:
-  - `200 OK`: Os detalhes atualizados do usuário no formato `UserPublic`.
+- **Path Parameters**:
+- `user_id` (int): The ID of the user to be updated.
 
-- **Erros**:
-  - `404 Not Found`: Se o usuário com o `user_id` fornecido não for encontrado.
-  - `401 Unauthorized`: Se o usuário autenticado não tiver permissão para atualizar o usuário.
+- **Request Body**:
+- `UserSchema`: Schema containing the new values ​​for `email`, `username`, and `password`.
 
-### 5. Deletar Usuário
+- **Response**:
+- `200 OK`: The updated user details in `UserPublic` format.
 
-**DELETE** `/usuarios/{user_id}`
+- **Errors**:
+- `404 Not Found`: If the user with the given `user_id` is not found.
+- `401 Unauthorized`: If the authenticated user does not have permission to update the user.
 
-Deleta um usuário específico do sistema.
+### 5. Delete User
 
-- **Parâmetros de Caminho**:
-  - `user_id` (int): O ID do usuário a ser deletado.
+**DELETE** `/users/{user_id}`
 
-- **Resposta**:
-  - `200 OK`: Mensagem de confirmação da exclusão no formato `{ "message": "Usuario deletado" }`.
+Deletes a specific user from the system.
 
-- **Erros**:
-  - `404 Not Found`: Se o usuário com o `user_id` fornecido não for encontrado.
-  - `401 Unauthorized`: Se o usuário autenticado não tiver permissão para deletar o usuário.
+- **Path Parameters**:
+- `user_id` (int): The ID of the user to be deleted.
 
-**AVISO ⚠️**
+- **Response**:
+- `200 OK`: Confirmation message of the deletion in the format `{ "message": "User deleted" }`.
 
-> O tempo de expiração do token deve ser de 30 minutos, o algorítimo usado |deve ser HS256 e o subject deve ser o email
+- **Errors**:
+- `404 Not Found`: If the user with the given `user_id` is not found.
+- `401 Unauthorized`: If the authenticated user does not have permission to delete the user.
+
+**WARNING ⚠️**
+
+> The token expiration time must be 30 minutes, the algorithm used |must be HS256 and the subject must be the email
 
 <br><br>
 
 ## Plantas e Flores. 💐
 
-### **1. Criar uma Planta**
+### **1. Create a Plant**
 
-**POST** `/plantas/`
+**POST** `/plants/`
 
-**Descrição**: Cria uma nova planta no sistema.
+**Description**: Creates a new plant in the system.
 
-**Corpo da Requisição**:
-- `plantSchema`: Um objeto contendo as informações da planta (`nome`, `nome_cientifico`, `classe`, `ordem`, `familia`, `genero`).
+**Request Body**:
+- `plantSchema`: An object containing the plant information (`name`, `scientific_name`, `class`, `order`, `family`, `genus`).
 
-**Resposta de Sucesso**:
+**Success Response**:
 ```json
 {
-  "id": 1,
-  "nome": "Rosa",
-  "nome_cientifico": "Rosa spp.",
-  "classe": "Magnoliopsida",
-  "ordem": "Rosales",
-  "familia": "Rosaceae",
-  "genero": "Rosa"
+"id": 1,
+"name": "Rosa",
+"scientific_name": "Rosa spp.",
+"class": "Magnoliopsida",
+"order": "Rosales",
+"family": "Rosaceae",
+"genus": "Rosa"
 }
 ```
 
-**Resposta de Erro**:
-- **400 Bad Request**: Se uma planta com o mesmo nome já existir.
+**Error Response**:
+- **400 Bad Request**: If a plant with the same name already exists. ```json
+{
+"detail": "This plant already exists. 🍂"
+} ```
+
+---
+
+### **2. List Plants**
+
+**GET** `/plants/`
+
+**Description**: Returns a list of plants, with pagination support.
+
+**Query Parameters**:
+- `limit` (int, optional): Maximum number of plants to return. Default value: `10`.
+- `offset` (int, optional): Number of plants to ignore before starting to return results. Default value: `0`.
+
+**Successful Response**:
 ```json
 {
-  "detail": "Essa planta já existe. 🍂"
+"Plants": [
+{
+"id": 1,
+"name": "Rosa",
+"scientific_name": "Rosa spp.",
+"class": "Magnoliopsida",
+"order": "Rosales",
+"family": "Rosaceae",
+"genus": "Rosa"
+},
+{
+"id": 2,
+"name": "Sunflower",
+"scientific_name": "Helianthus annuus",
+"class": "Magnoliopsida",
+"order": "Asterales",
+"family": "Asteraceae",
+"genus": "Helianthus"
+}
+]
 }
 ```
 
 ---
 
-### **2. Listar Plantas**
+### **3. Filter Plants by Attributes**
 
-**GET** `/plantas/`
+**GET** `/plants/?class={class}&order={order}&family={family}&genre={genre}`
 
-**Descrição**: Retorna uma lista de plantas, com suporte a paginação.
+**Description**: Filters plants based on attributes such as class, order, family, and genus.
 
-**Parâmetros de Query**:
-- `limit` (int, opcional): Número máximo de plantas a serem retornadas. Valor padrão: `10`.
-- `offset` (int, opcional): Número de plantas a serem ignoradas antes de começar a retornar os resultados. Valor padrão: `0`.
+**Query Parameters**:
+- `class` (str, optional): Filter by class.
+- `order` (str, optional): Filter by order.
+- `family` (str, optional): Filter by family.
+- `genre` (str, optional): Filter by genus.
+- `limit` (int, optional): Limit of results.
+- `offset` (int, optional): Offset of results.
 
-**Resposta de Sucesso**:
+**Successful Response**:
 ```json
 {
-  "Plants": [
-    {
-      "id": 1,
-      "nome": "Rosa",
-      "nome_cientifico": "Rosa spp.",
-      "classe": "Magnoliopsida",
-      "ordem": "Rosales",
-      "familia": "Rosaceae",
-      "genero": "Rosa"
-    },
-    {
-      "id": 2,
-      "nome": "Girassol",
-      "nome_cientifico": "Helianthus annuus",
-      "classe": "Magnoliopsida",
-      "ordem": "Asterales",
-      "familia": "Asteraceae",
-      "genero": "Helianthus"
-    }
-  ]
+"Plants": [
+{
+"id": 3,
+"name": "Daisy",
+"scientific_name": "Bellis perennis",
+"class": "Magnoliopsida",
+"order": "Asterales",
+"family": "Asteraceae",
+"genus": "Bellis"
+}
+]
 }
 ```
 
 ---
 
-### **3. Filtrar Plantas por Atributos**
+### **4. Get a Specific Plant**
 
-**GET** `/plantas/?classe={classe}&ordem={ordem}&familia={familia}&genero={genero}`
+**GET** `/plants/{plant_id}`
 
-**Descrição**: Filtra plantas com base em atributos como classe, ordem, família e gênero.
+**Description**: Returns the details of a specific plant based on its ID.
 
-**Parâmetros de Query**:
-- `classe` (str, opcional): Filtrar por classe.
-- `ordem` (str, opcional): Filtrar por ordem.
-- `familia` (str, opcional): Filtrar por família.
-- `genero` (str, opcional): Filtrar por gênero.
-- `limit` (int, opcional): Limite de resultados.
-- `offset` (int, opcional): Offset de resultados.
+**Path Parameters**:
+- `plant_id` (int): ID of the plant to be retrieved.
 
-**Resposta de Sucesso**:
+**Success Response**:
 ```json
 {
-  "Plants": [
-    {
-      "id": 3,
-      "nome": "Margarida",
-      "nome_cientifico": "Bellis perennis",
-      "classe": "Magnoliopsida",
-      "ordem": "Asterales",
-      "familia": "Asteraceae",
-      "genero": "Bellis"
-    }
-  ]
+"id": 1,
+"name": "Rosa",
+"scientific_name": "Rosa spp.",
+"class": "Magnoliopsida",
+"order": "Rosales",
+"family": "Rosaceae",
+"genus": "Rosa"
+}
+```
+
+**Error Response**:
+- **404 Not Found**: If the plant with the given `plant_id` is not found. ```json
+{
+"detail": "Plant not found. 🍂"
+} ```
+
+---
+
+### **5. Update a Plant**
+
+**PUT** `/plants/{plant_id}`
+
+**Description**: Updates the information of an existing plant.
+
+**Path Parameters**:
+- `plant_id` (int): ID of the plant to be updated.
+
+**Request Body**:
+- `plantSchema`: Object containing the new values ​​for the plant (`name`, `scientific_name`, `class`, `order`, `family`, `genre`).
+
+**Success Response**:
+```json
+{
+"id": 1,
+"name": "Rosa Atualizada",
+"nome_scientifico": "Rosa spp.",
+"classe": "Magnoliopsida",
+"orden": "Rosales",
+"familia": "Rosaceae",
+"genre": "Rosa"
+}
+```
+
+**Error Response**:
+- **404 Not Found**: If the plant with the given `plant_id` is not found.
+```json
+{
+"detail": "The plant does not exist, it was not found. 🍂"
 }
 ```
 
 ---
 
-### **4. Ler uma Planta Específica**
+### **6. Delete a Plant**
 
-**GET** `/plantas/{plant_id}`
 
-**Descrição**: Retorna os detalhes de uma planta específica com base em seu ID.
+**DELETE** `/plants/{plant_id}`
 
-**Parâmetros de Caminho**:
-- `plant_id` (int): ID da planta a ser recuperada.
+**Description**: Deletes a specific plant from the system.
 
-**Resposta de Sucesso**:
+**Path Parameters**:
+- `plant_id` (int): ID of the plant to be deleted.
+
+**Success Response**:
 ```json
 {
-  "id": 1,
-  "nome": "Rosa",
-  "nome_cientifico": "Rosa spp.",
-  "classe": "Magnoliopsida",
-  "ordem": "Rosales",
-  "familia": "Rosaceae",
-  "genero": "Rosa"
+"message": "The plant has been deleted 🪓🪚"
 }
 ```
 
-**Resposta de Erro**:
-- **404 Not Found**: Se a planta com o `plant_id` fornecido não for encontrada.
+**Error Response**:
+- **404 Not Found**: If the plant with the given `plant_id` is not found.
 ```json
 {
-  "detail": "Planta não encontrada. 🍂"
+"detail": "Plant not found. 🍂"
 }
 ```
 
 ---
-
-### **5. Atualizar uma Planta**
-
-**PUT** `/plantas/{plant_id}`
-
-**Descrição**: Atualiza as informações de uma planta existente.
-
-**Parâmetros de Caminho**:
-- `plant_id` (int): ID da planta a ser atualizada.
-
-**Corpo da Requisição**:
-- `plantSchema`: Objeto contendo os novos valores para a planta (`nome`, `nome_cientifico`, `classe`, `ordem`, `familia`, `genero`).
-
-**Resposta de Sucesso**:
-```json
-{
-  "id": 1,
-  "nome": "Rosa Atualizada",
-  "nome_cientifico": "Rosa spp.",
-  "classe": "Magnoliopsida",
-  "ordem": "Rosales",
-  "familia": "Rosaceae",
-  "genero": "Rosa"
-}
-```
-
-**Resposta de Erro**:
-- **404 Not Found**: Se a planta com o `plant_id` fornecido não for encontrada.
-```json
-{
-  "detail": "A planta não existe, ela não foi encontrada. 🍂"
-}
-```
-
----
-
-### **6. Deletar uma Planta**
-
-**DELETE** `/plantas/{plant_id}`
-
-**Descrição**: Deleta uma planta específica do sistema.
-
-**Parâmetros de Caminho**:
-- `plant_id` (int): ID da planta a ser deletada.
-
-**Resposta de Sucesso**:
-```json
-{
-  "message": "A planta foi deletada 🪓🪚"
-}
-```
-
-**Resposta de Erro**:
-- **404 Not Found**: Se a planta com o `plant_id` fornecido não for encontrada.
-```json
-{
-  "detail": "Planta não encontrada. 🍂"
-}
-```
-
----
-
-
 # O BANCO DE DADOS | ORM. 🌵
 
-A modelagem do banco deve contar com três tabelas: User, Plantas e Flores.
+The database modeling must have three tables: User, Plants and Flowers.
 
 ```mermaid
 erDiagram
@@ -415,12 +411,10 @@ Este projeto utilizou web scraping para extrair informações taxonômicas sobre
 5. `Hospedagem:` [Fly.io](http://Fly.io)
 
 **AVISO ⚠️**
-> Essa API ainda não passou pelo processo de Docker e da hospedagem.
-
+> This API has not yet gone through the Docker and hosting process.
 # Licença
 
-Este repositório está licenciado sob a [MIT License](./LICENSE).
-
+This repository is licensed under the [MIT License](./LICENSE).
 
 
 ---
