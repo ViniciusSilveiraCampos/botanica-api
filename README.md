@@ -32,7 +32,7 @@ The goal of the API is to create and manage some plants. All this in a very simp
 
 ## Documentation
 
-For detailed information on how to use this project, please refer to the documentation.
+For detailed information on how to use this project, please refer to the [documentation](https://viniciussilveiracampos.github.io/botanica-api/).
 
 # Technologies and Tools
 
