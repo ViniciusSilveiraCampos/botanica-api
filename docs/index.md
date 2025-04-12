@@ -1,4 +1,12 @@
+<h1> BOTANICA API. 🌸 </h1>
+
+<div align='center'>
+<img src="assets/images/api-botanica.jpeg">
+</div>
+<p align="left"> <small> 𝓐𝓻𝓽 𝓫𝔂: <a href="https://www.instagram.com/lotusteapot?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="> @lotusteapot </a> </small> </p>
+
 The goal of the API is to create and manage some plants. All this in a very simplified context. Using only the basic functionalities for demonstration.
+
 
 > Why are flowers separated from plants? Because every flower is a plant, but not every plant is a flower! And I hope to divide it into more categories later.
 

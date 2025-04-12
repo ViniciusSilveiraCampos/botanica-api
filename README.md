@@ -1,7 +1,8 @@
 
 # Botanica API 🪴
-
-
+<p align="center">
+<img src="docs/assets/images/api-botanica.jpeg">
+</p>
 <div align="center">
     <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)" >
     <img src="https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi" >

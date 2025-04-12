@@ -38,7 +38,7 @@ erDiagram
 This project used web scraping to extract taxonomic information about plants from [Wikipedia](https://pt.wikipedia.org/wiki/Lista_de_plantas_do_Brasil). Using the `BeautifulSoup` library to parse the HTML, data such as scientific name, class, order, family and genus of several plants were collected. This data was then stored in a database using SQLAlchemy, facilitating future queries and ensuring the persistence of the extracted information.
 
 <div align='center'>
-<img src=assets/images/image.png width=30%>
+<img src=assets/images/abacaxi.png width=30%>
 </div>
 
 
