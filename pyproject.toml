@@ -19,6 +19,7 @@ psycopg2-binary = "^2.9.9"
 mkdocs-material = "^9.6.10"
 pymdown-extensions = "^10.14.3"
 mkdocs-mermaid2-plugin = "^1.2.1"
+mkdocs = "^1.6.1"
 
 [tool.ruff]
 line-length = 79
