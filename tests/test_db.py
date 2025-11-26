@@ -1,6 +1,6 @@
 from sqlalchemy import select
 
-from fast_zero.model import User, Plantas
+from fast_zero.model import Plantas, User
 
 
 def test_create_user(session):

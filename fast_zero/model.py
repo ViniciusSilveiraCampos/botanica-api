@@ -21,6 +21,7 @@ class User:
         init=False, server_default=func.now(), onupdate=func.now()
     )
 
+
 @table_registry.mapped_as_dataclass
 class Flores:
     __tablename__ = 'flores'
@@ -34,7 +35,6 @@ class Flores:
     genero: Mapped[str]
 
 
-
 @table_registry.mapped_as_dataclass
 class Plantas:
     __tablename__ = 'plantas'
@@ -46,5 +46,3 @@ class Plantas:
     ordem: Mapped[str]
     familia: Mapped[str]
     genero: Mapped[str]
-
-

@@ -5,7 +5,6 @@ from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from jwt import decode, encode
 from jwt.exceptions import ExpiredSignatureError, PyJWTError
-
 from pwdlib import PasswordHash
 from sqlalchemy import select
 from sqlalchemy.orm import Session

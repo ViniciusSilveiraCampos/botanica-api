@@ -40,7 +40,7 @@ def create_or_update_plant(planta: plantSchema, session: Session):
     return db_plant
 
 
-flores = open("flores.txt", "r+")
+flores = open("flores.txt", "r+", encoding="utf-8")
 
 
 def extrair_informacoes(nome_cientifico, url):

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
+from fast_zero.routers import auth, flores, plantas, users
 from fast_zero.schemas import Message
-from fast_zero.routers import users, auth, plantas, flores
 
 app = FastAPI()
 

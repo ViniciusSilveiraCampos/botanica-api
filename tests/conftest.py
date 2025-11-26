@@ -7,8 +7,7 @@ from sqlalchemy.pool import StaticPool
 
 from fast_zero.app import app
 from fast_zero.database import get_session
-from fast_zero.model import Plantas, Flores
-from fast_zero.model import table_registry, User
+from fast_zero.model import Flores, Plantas, User, table_registry
 from fast_zero.security import get_password_hash
 
 
@@ -119,6 +118,7 @@ def other_user(session):
     v_user.clean_password = 'testtest'
 
     return v_user
+
 
 @pytest.fixture
 def flor(session):

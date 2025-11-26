@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, ConfigDict, validator
+from pydantic import BaseModel, ConfigDict, EmailStr, validator
 
 
 class UserSchema(BaseModel):
@@ -59,8 +59,6 @@ class UserPlantPublic(BaseModel):
 
 class UserListPlants(BaseModel):
     Plants: list[UserPlantPublic]  # Esta chave deve corresponder à chave no retorno do endpoint
-
-
 
 
 class UserFlowerPublic(BaseModel):
