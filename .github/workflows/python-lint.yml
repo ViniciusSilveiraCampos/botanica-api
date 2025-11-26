@@ -1,40 +1,27 @@
-name: Lint
+name: Ruff Linter
 
 on:
   push:
-    branches: ["main", "develop"]
+    branches: [ main, develop ]
   pull_request:
+    branches: [ main, develop ]
 
 jobs:
   lint:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+      - name: Install uv
+        uses: astral-sh/setup-uv@v1
 
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          version: latest
+      - name: Install dependencies (only dev)
+        run: uv sync --dev
 
-      - name: Cache Poetry virtualenvs
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pypoetry/virtualenvs
-          key: poetry-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-          restore-keys: poetry-${{ runner.os }}-
+      - name: Run Ruff check
+        run: uv run ruff check .
 
-      - name: Install dependencies
-        run: poetry install
-
-      - name: Run Ruff
-        run: poetry run ruff check .
-
-      - name: Run Black
-        run: poetry run black --check .
+      - name: Run Ruff diff check
+        run: uv run ruff check . --diff
