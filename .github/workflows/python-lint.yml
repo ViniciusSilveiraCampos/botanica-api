@@ -11,17 +11,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install uv
         uses: astral-sh/setup-uv@v1
 
-      - name: Install dependencies (only dev)
-        run: uv sync --group dev
+      - name: Install dependencies including dev extras
+        run: uv sync --extra dev
 
-      - name: Run Ruff check
+      - name: Run ruff check
         run: uv run ruff check .
 
-      - name: Run Ruff diff check
+      - name: Run ruff diff
         run: uv run ruff check . --diff
