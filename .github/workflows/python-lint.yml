@@ -2,9 +2,9 @@ name: Ruff Linter
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, feature/pipelines]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, develop, feature/pipelines]
 
 jobs:
   lint:
