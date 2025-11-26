@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, ConfigDict, validator
+from pydantic import BaseModel, ConfigDict, EmailStr, validator
 
 
 class UserSchema(BaseModel):
@@ -39,10 +39,10 @@ class plantSchema(BaseModel):
     familia: str
     genero: str
 
-    @validator('*', pre=True)
+    @validator("*", pre=True)
     def sanitize_fields(cls, v):
         if isinstance(v, str):
-            return ' '.join(v.strip().lower().split())
+            return " ".join(v.strip().lower().split())
         return v  # pragma: no cover
 
 
@@ -58,9 +58,9 @@ class UserPlantPublic(BaseModel):
 
 
 class UserListPlants(BaseModel):
-    Plants: list[UserPlantPublic]  # Esta chave deve corresponder à chave no retorno do endpoint
-
-
+    Plants: list[
+        UserPlantPublic
+    ]  # Esta chave deve corresponder à chave no retorno do endpoint
 
 
 class UserFlowerPublic(BaseModel):

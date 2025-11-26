@@ -1,2 +1,2 @@
 def read_root():
-    return {'message': 'Olá Mundo!'}
+    return {"message": "Olá Mundo!"}

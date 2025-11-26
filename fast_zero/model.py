@@ -8,22 +8,21 @@ table_registry = registry()
 
 @table_registry.mapped_as_dataclass
 class User:
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
     username: Mapped[str] = mapped_column(unique=True)
     password: Mapped[str]
     email: Mapped[str] = mapped_column(unique=True)
-    created_at: Mapped[datetime] = mapped_column(
-        init=False, server_default=func.now()
-    )
+    created_at: Mapped[datetime] = mapped_column(init=False, server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(
         init=False, server_default=func.now(), onupdate=func.now()
     )
 
+
 @table_registry.mapped_as_dataclass
 class Flores:
-    __tablename__ = 'flores'
+    __tablename__ = "flores"
 
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
     nome: Mapped[str] = mapped_column(unique=True)
@@ -32,12 +31,11 @@ class Flores:
     ordem: Mapped[str]
     familia: Mapped[str]
     genero: Mapped[str]
-
 
 
 @table_registry.mapped_as_dataclass
 class Plantas:
-    __tablename__ = 'plantas'
+    __tablename__ = "plantas"
 
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
     nome: Mapped[str] = mapped_column(unique=True)
@@ -46,5 +44,3 @@ class Plantas:
     ordem: Mapped[str]
     familia: Mapped[str]
     genero: Mapped[str]
-
-

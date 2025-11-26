@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
+from fast_zero.routers import auth, flores, plantas, users
 from fast_zero.schemas import Message
-from fast_zero.routers import users, auth, plantas, flores
 
 app = FastAPI()
 
@@ -13,6 +13,7 @@ app.include_router(flores.router)
 
 # Teste da API
 
-@app.get('/', response_model=Message)
+
+@app.get("/", response_model=Message)
 def read_root():
-    return {'message': 'Olá Mundo!'}
+    return {"message": "Olá Mundo!"}

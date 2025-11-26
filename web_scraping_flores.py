@@ -40,15 +40,21 @@ def create_or_update_plant(planta: plantSchema, session: Session):
     return db_plant
 
 
-flores = open("flores.txt", "r+")
+flores = open("flores.txt", "r+", encoding="utf-8")
 
 
 def extrair_informacoes(nome_cientifico, url):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
 
-    info = {"nome": unquote(url.split("/wiki/")[-1].replace("_", " ")), "nome cientifico": nome_cientifico,
-            "classe": "null", "ordem": "null", "familia": "null", "genero": "null"}
+    info = {
+        "nome": unquote(url.split("/wiki/")[-1].replace("_", " ")),
+        "nome cientifico": nome_cientifico,
+        "classe": "null",
+        "ordem": "null",
+        "familia": "null",
+        "genero": "null",
+    }
 
     for td in soup.find_all("td"):
         if td.find("a") and "Classe" in td.get_text():
@@ -86,7 +92,7 @@ for linhas in flores:
         classe=info["classe"],
         ordem=info["ordem"],
         familia=info["familia"],
-        genero=info["genero"]
+        genero=info["genero"],
     )
 
     create_or_update_plant(planta_schema, session)
