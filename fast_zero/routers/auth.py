@@ -14,35 +14,30 @@ from fast_zero.security import (
     verify_password,
 )
 
-router = APIRouter(
-    prefix='/auth',
-    tags=['auth']
-)
+router = APIRouter(prefix="/auth", tags=["auth"])
 
 T_OAuth2Form = Annotated[OAuth2PasswordRequestForm, Depends()]
 
 
-@router.post('/token', response_model=Token)
+@router.post("/token", response_model=Token)
 def login_for_acess_token(
-        form_data: T_OAuth2Form,
-        session: Session = Depends(get_session),
+    form_data: T_OAuth2Form,
+    session: Session = Depends(get_session),
 ):
-    user = session.scalar(
-        select(User).where(User.email == form_data.username)
-    )
+    user = session.scalar(select(User).where(User.email == form_data.username))
     if not user or not verify_password(form_data.password, user.password):
         raise HTTPException(
             status_code=400, detail="Sua senha ou o seu email estão errados."
         )
-    access_token = create_access_token(data={'sub': user.email})
+    access_token = create_access_token(data={"sub": user.email})
 
-    return {'access_token': access_token, 'token_type': 'Bearer'}
+    return {"access_token": access_token, "token_type": "Bearer"}
 
 
-@router.post('/refresh_token', response_model=Token)
+@router.post("/refresh_token", response_model=Token)
 def refresh_access_token(
-        user: User = Depends(get_current_user),
+    user: User = Depends(get_current_user),
 ):
-    new_access_token = create_access_token(data={'sub': user.email})
+    new_access_token = create_access_token(data={"sub": user.email})
 
-    return {'access_token': new_access_token, 'token_type': 'bearer'}
+    return {"access_token": new_access_token, "token_type": "bearer"}

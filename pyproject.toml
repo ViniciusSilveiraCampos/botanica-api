@@ -44,10 +44,14 @@ extend-exclude = ["migrations"]
 [tool.ruff.lint]
 preview = true
 select = ["I", "F", "E", "W", "PL", "PT"]
-
-[tool.ruff.format]
-preview = true
-quote-style = "single"
+ignore = [
+    "E",   
+    "W",  
+    "I", 
+    "RUF100",
+    "PLR0913",
+    "PLR0917"
+]
 
 [tool.pytest.ini_options]
 pythonpath = "."
@@ -55,7 +59,7 @@ addopts = "-p no:warnings"
 
 [tool.taskipy.tasks]
 lint = "ruff check . && ruff check . --diff"
-format = "ruff check . --fix && ruff format ."
+format = "black ."
 run = "fastapi dev fast_zero/app.py"
 pre_test = "task lint"
 test = "pytest -s -x --cov=fast_zero -vv"

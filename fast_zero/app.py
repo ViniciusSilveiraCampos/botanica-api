@@ -13,6 +13,7 @@ app.include_router(flores.router)
 
 # Teste da API
 
-@app.get('/', response_model=Message)
+
+@app.get("/", response_model=Message)
 def read_root():
-    return {'message': 'Olá Mundo!'}
+    return {"message": "Olá Mundo!"}
